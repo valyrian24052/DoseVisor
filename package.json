@@ -10,7 +10,7 @@
   "dependencies": {
     "@google-cloud/vision": "^3.0.0",
     "@google/generative-ai": "^0.17.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "formidable": "^2.0.0",
     "next": "latest",
     "react": "latest",
