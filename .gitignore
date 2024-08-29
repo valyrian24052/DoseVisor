@@ -1,0 +1,12 @@
+node_modules
+node_modules
+node_modules/
+.next/
+out/
+dist/
+package-lock.json
+config/
+.env
+_pycache_
+credentials.json
+.next

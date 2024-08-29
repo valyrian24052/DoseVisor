@@ -1,0 +1,44 @@
+/* styles/globals.css */
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  }
+  
+  h2 {
+    margin-top: 30px;
+    font-size: 20px;
+  }
+  
+  p {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+  }
+  
