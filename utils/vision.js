@@ -1,11 +1,10 @@
+// utils/vision.js
+
 const vision = require('@google-cloud/vision');
 
+// Initialize the Google Cloud Vision client using the credentials.json file
 const client = new vision.ImageAnnotatorClient({
-  credentials: {
-    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY,
-    client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
-  },
-  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
+  keyFilename: './config/credentials.json', // Path to your Google Cloud credentials
 });
 
 /**
