@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import axios from 'axios';
+import logo from '../utils/logo.svg';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -43,6 +45,10 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>DoseVisor</title>
+        <link rel="icon" href="/logo.svg" />{}
+      </Head>
       <h1 className={styles.title}>Upload Your Prescription</h1>
       <p className={styles.subtitle}>Simply upload a clear photo or scan of your medical prescription to get started.</p>
       <form onSubmit={handleSubmit} className={styles.form}>
