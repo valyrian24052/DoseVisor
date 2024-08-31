@@ -8,3 +8,5 @@ package-lock.json
 .env
 _pycache_
 .next
+config
+credentials.json
