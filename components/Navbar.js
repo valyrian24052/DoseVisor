@@ -27,7 +27,7 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="navbar-right">
-          <Link href="https://github.com/valyrian24052/Med-Prescription-reader" passHref legacyBehavior>
+          <Link href="https://github.com/valyrian24052/DoseVisor" passHref legacyBehavior>
             <a target="_blank" rel="noopener noreferrer" className="navbar-link">View on GitHub</a>
           </Link>
           <a href="mailto:shashanksharma@gmail.com" className="navbar-link">Connect</a>
@@ -39,7 +39,7 @@ const Navbar = () => {
           display: flex;
           justify-content: center;
           background-color: #000;
-          padding: 5px 0;
+          padding: 20px 0;
         }
         .navbar {
           width: 100%;
