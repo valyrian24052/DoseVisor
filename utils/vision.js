@@ -1,6 +1,10 @@
 // utils/vision.js
 const vision = require('@google-cloud/vision');
-
+if (!process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
+  console.error('GOOGLE_APPLICATION_CREDENTIALS_JSON is not defined.');
+} else {
+  console.log('GOOGLE_APPLICATION_CREDENTIALS_JSON:', process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+}
 const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
 
 const client = new vision.ImageAnnotatorClient({
