@@ -2,6 +2,7 @@ import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
 import { detectText } from '../../utils/vision';
+import { generateContent } from '../../utils/gemini';
 
 export const config = {
   api: {
@@ -10,30 +11,38 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const form = new formidable.IncomingForm();
+  const form = new formidable.IncomingForm();
 
-    form.parse(req, async (err, fields, files) => {
-      if (err) {
-        console.error('Error parsing the form:', err);
-        return res.status(500).json({ error: 'Error parsing the form data' });
+  form.parse(req, async (err, fields, files) => {
+    if (err) {
+      console.error('Error parsing form:', err);
+      return res.status(500).json({ error: 'Error processing file upload' });
+    }
+
+    const file = files.image;
+    if (!file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const filePath = file.filepath || file.path;
+
+    try {
+      if (!fs.existsSync(filePath)) {
+        throw new Error(`File not found: ${filePath}`);
       }
 
-      const file = files.image;
-      const tempPath = file.filepath;
+      // Step 1: Perform OCR to extract text from the image
+      const ocrResult = await detectText(filePath);
+      // console.log(ocrResult)
 
-      try {
-        // Process the file directly from the tempPath
-        const ocrText = await detectText(tempPath);
+      // Step 2: Generate content using the extracted text via Gemini model
+      const generatedContent = await generateContent(ocrResult);
 
-        // Send the OCR text or any other response back to the frontend
-        res.status(200).json({ response: ocrText });
-      } catch (error) {
-        console.error('Error during processing:', error);
-        res.status(500).json({ error: 'Failed to process the image' });
-      }
-    });
-  } else {
-    res.status(405).json({ error: 'Only POST requests are allowed' });
-  }
+      // Step 3: Return the generated content as the response
+      res.status(200).json({ response: generatedContent });
+    } catch (error) {
+      console.error('Error during processing:', error);
+      res.status(500).json({ error: 'Failed to process the image' });
+    }
+  });
 }

@@ -1,10 +1,13 @@
 // utils/vision.js
-
 const vision = require('@google-cloud/vision');
+const path = require('path');
+
+// Get the path to the credentials.json file
+const credentialsPath = 'config/credentials.json';
 
 // Initialize the Google Cloud Vision client using the credentials.json file
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: './config/credentials.json', // Path to your Google Cloud credentials
+  keyFilename: credentialsPath
 });
 
 /**

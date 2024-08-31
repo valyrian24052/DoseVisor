@@ -13,6 +13,7 @@
     "axios": "^0.21.4",
     "formidable": "^2.0.0",
     "next": "latest",
+    "prop-types": "^15.8.1",
     "react": "latest",
     "react-dom": "latest"
   }

@@ -1,0 +1,99 @@
+/* Home.module.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #6a549c;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: 100px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: #dddddd;
+  }
+  
+  .form {
+    margin-bottom: 30px;
+  }
+  
+  .fileInputLabel {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 12px 20px;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+    font-family: 'Roboto', sans-serif; 
+  }
+  
+  .fileInputLabel:hover {
+    background-color: #5a5a5a;
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .submitButton {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #8b549c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Roboto', sans-serif; 
+  }
+  
+  .submitButton:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+  }
+  
+  .submitButton:not(:disabled):hover {
+    background-color: #8b549c;
+  }
+  
+  .result {
+    margin-top: 30px;
+    text-align: left;
+    background-color: #844cb2;
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif; 
+  }
+  
+  .result h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    margin-top: -2px;
+  }
+  
+  .result pre {
+    background-color: #8d58b7;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #ffffff;
+  }
+  
