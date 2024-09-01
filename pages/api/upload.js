@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
       // Step 1: Perform OCR to extract text from the image
       const ocrResult = await detectText(filePath);
-      // console.log(ocrResult)
+      console.log(ocrResult)
 
       // Step 2: Generate content using the extracted text via Gemini model
       const generatedContent = await generateContent(ocrResult);
