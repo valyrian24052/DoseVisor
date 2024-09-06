@@ -39,7 +39,7 @@ const CursorTrail = () => {
         ctx.lineTo(point.x, point.y);
       }
 
-      ctx.strokeStyle = 'rgba(147, 51, 234, 0.5)'; // Purple color with opacity
+      ctx.strokeStyle = 'rgba(f, f, f, 0.5)'; // Purple color with opacity
       ctx.lineWidth = 2;
       ctx.lineCap = 'round';
       ctx.stroke();

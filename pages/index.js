@@ -56,7 +56,7 @@ export default function Home() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className={styles.container}>
       <Head>
         <title>DoseVisor</title>
         <link rel="icon" href="/logo.svg" />
