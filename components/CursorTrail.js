@@ -4,15 +4,29 @@ const CursorTrail = () => {
   const canvasRef = useRef(null);
   const cursorRef = useRef({ x: 0, y: 0 });
   const pointsRef = useRef([]);
+  const cursorImageRef = useRef(null);
 
   useEffect(() => {
+    console.log('CursorTrail effect running');
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
+    // Load stethoscope image
+    const cursorImage = new Image();
+    cursorImage.src = '/stethoscope.svg';
+    cursorImage.onload = () => {
+      console.log('Stethoscope image loaded');
+      cursorImageRef.current = cursorImage;
+    };
+    cursorImage.onerror = (e) => {
+      console.error('Error loading stethoscope image', e);
+    };
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      console.log('Canvas resized', canvas.width, canvas.height);
     };
 
     const updateCursorPosition = (e) => {
@@ -22,15 +36,12 @@ const CursorTrail = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Add current cursor position to points
       pointsRef.current.push({ ...cursorRef.current });
 
-      // Limit the number of points
       if (pointsRef.current.length > 50) {
         pointsRef.current.shift();
       }
 
-      // Draw the trail
       ctx.beginPath();
       ctx.moveTo(pointsRef.current[0].x, pointsRef.current[0].y);
 
@@ -39,10 +50,15 @@ const CursorTrail = () => {
         ctx.lineTo(point.x, point.y);
       }
 
-      ctx.strokeStyle = 'rgba(f, f, f, 0.5)'; // Purple color with opacity
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
       ctx.lineWidth = 2;
       ctx.lineCap = 'round';
       ctx.stroke();
+
+      // Draw stethoscope cursor
+      if (cursorImageRef.current) {
+        ctx.drawImage(cursorImageRef.current, cursorRef.current.x - 12, cursorRef.current.y - 12, 24, 24);
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -61,16 +77,23 @@ const CursorTrail = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        pointerEvents: 'none',
-        zIndex: 9999,
-      }}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          pointerEvents: 'none',
+          zIndex: 9999,
+        }}
+      />
+      <style jsx global>{`
+        body {
+          cursor: none;
+        }
+      `}</style>
+    </>
   );
 };
 
