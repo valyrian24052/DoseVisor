@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
+import Image from "next/image";
+import CursorTrail from '../components/CursorTrail';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -54,11 +56,12 @@ export default function Home() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div className={styles.container}>
+    <div className="min-h-screen bg-black text-white">
       <Head>
         <title>DoseVisor</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
+      <CursorTrail />
       <h1 className={styles.title}>Upload Your Prescription</h1>
       <p className={styles.subtitle}>Simply upload a clear photo or scan of your medical prescription to get started.</p>
       
